@@ -8,47 +8,25 @@ export default function Sliders() {
     let [ term, setTerm] = useState(40)
 
 
-    function sliderAmount(event){
-        setAmount(event)
-    }
-
-    function sliderInterest(event){
-        setInterest(event)
-    }
-
-    function sliderTerm(event){
-        setTerm(event)
-    }
-
-    function fieldAmount(event){
-        setAmount(event)
-    }
-
-    function fieldInterest(event){
-        setInterest(event)
-    }
-
-    function fieldTerm(event){
-        setTerm(event)
-    }
+   
 
     return (
         <div>
-            <label>Amount</label>
+            <label>Loan Amount</label>
             <div className="slidecontainer">
-                <input type="range" min="1" max="100" value={amount} className="slider" onChange={sliderAmount} id="myRange"/> 
-                <input type="text" value={amount} className="text-field" onChange={fieldAmount} />
+                <input type="range" min="1" max="100" value={amount} className="slider" onChange={e => setAmount(e.target.value)} id="myRange"/> 
+                <input type="text" value={amount} className="text-field" onChange={e => setAmount(e.target.value)} />
                 
                 </div>
-                <label>interest</label>
+                <label>Interest %</label>
                 <div className="slidecontainer">
-                <input type="range" min="1" max="100" value={interest} className="slider" onChange={sliderInterest} id="myRange"/> 
-    <input type="text" value={interest} className="text-field" onChange={fieldInterest}/>            
+                <input type="range" min="1" max="100" value={interest} className="slider" onChange={e => setInterest(e.target.value)} id="myRange"/> 
+    <input type="text" value={interest} className="text-field" onChange={e => setInterest(e.target.value)}/>            
                 </div>
-                <label>Term</label>
+                <label>Term Length</label>
                 <div className="slidecontainer">
-                <input type="range" min="1" max="100" value={term} className="slider" onChange={sliderTerm} id="myRange"/> 
-    <input type="text" value={term} className="text-field" onChange={fieldTerm}/>            
+                <input type="range" min="1" max="100" value={term} className="slider" onChange={e => setTerm(e.target.value)} id="myRange"/> 
+    <input type="text" value={term} className="text-field" onChange={e => setTerm(e.target.value)}/>            
 
                 </div>
         </div>

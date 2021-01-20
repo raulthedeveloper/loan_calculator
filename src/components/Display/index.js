@@ -45,7 +45,7 @@ export default class index extends Component {
         return (
             <div className="chart-container">
                 <Chart location={this.state.title} chartData={this.state.chartData}  legendPosition="bottom"/>
-                <div style={{display:"flex",flexDirection:"column",textAlign:'left',marginLeft:"1rem"}}>
+                <div style={{display:"flex",flexDirection:"column",textAlign:'left',marginLeft:"1rem",lineHeight:'2.3rem'}}>
                     <div style={{display:"flex", flexDirection:"column", justifyContent:'center'}}>
                     <div className="result-values">
                         <span>Interest</span> 
