@@ -1,0 +1,25 @@
+.btn{
+    background-color: #F77757;
+    color: white;
+    padding: 6px;
+    margin-right: 10px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    border: inherit;
+    width: 8rem;
+}
+
+.btn:hover{
+    background-color: #a94931;
+}
+
+.btn:active{
+    border: solid white 1px;
+    background-color: #eb8f77;
+}
+
+.loan-button{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0rem;
+}

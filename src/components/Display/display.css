@@ -1,0 +1,21 @@
+.chart-container{
+    background-color: white;
+    border-radius: 8px;
+    max-height: 60%;
+    width: 70%;
+}
+
+canvas{
+    min-height: 300px;
+}
+
+.chart-container span{
+    font-size: 1.3rem;
+}
+
+.result-values{
+    display: flex;
+    justify-content: space-between;
+    margin-left:1rem;
+    margin-right: 2rem;
+}
