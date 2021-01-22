@@ -1,15 +1,18 @@
-import { React, useState} from 'react'
+import { React } from 'react'
 import './controls.css'
+
+
+
+
 
 export default function Sliders(props) {
 
     
     
-    let {interestMax,termMax,interest,term,amount } = props.data
+let {interestMax,termMax,interest,term,amount } = props.data
+
 
    
-
-
 function changeAmount(e){
       props.changeAmount(e.target.value)
 }
@@ -28,7 +31,7 @@ function changeTerm(e){
         <div>
             <label>Loan Amount</label>
             <div className="slidecontainer">
-                <input type="range" min="1" max="10000" value={amount} className="slider" onChange={(e)=>changeAmount(e)} id="myRange"/> 
+                <input type="range" min="1" max="1000000" value={amount} className="slider" onChange={(e)=>changeAmount(e)} id="myRange"/> 
                 <input type="text" value={amount} className="text-field" onChange={e =>changeAmount(e)} />
                 
                 </div>

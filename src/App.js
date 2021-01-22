@@ -1,7 +1,7 @@
 import './App.css';
 import Controls from "./components/Controls/Controls"
 import Display from "./components/Display/index"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 
@@ -9,10 +9,11 @@ import { useState } from 'react'
 
 
 function App() {
-let [term,setTerm] = useState(0)
-let [ amount, setAmount ] = useState(0)
-let [ interest, setInterest ] = useState(0)
-let [ loanType, setLoanType ] = useState("")
+
+let [term,setTerm] = useState(Number)
+let [ amount, setAmount ] = useState(Number)
+let [ interest, setInterest ] = useState(Number)
+let [ loanType, setLoanType ] = useState(String)
 
 
 
@@ -22,6 +23,10 @@ function updateData(term,amount,interest){
   setInterest(interest)
   
 }
+
+useEffect(()=>{
+
+},[amount,interest,loanType])
 
 function updateLoanType(loanType){
   setLoanType(loanType)
