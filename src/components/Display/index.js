@@ -38,10 +38,10 @@ CalculateTotal = () =>{
 return <span>{"$" + numberWithCommas(total) }</span>
 }
 
-CalculateMonthly(){
+CalculateMonthly = () =>{
     let {amount,interest,term} = this.props.payload
     let total = parseInt(amount) + parseInt(parseFloat(amount * (interest/100) * term).toFixed(2))
-    let monthly = total / ( term / 12 ) // term is being divided by 12 (months)
+    let monthly =  parseFloat(total /  term / 12 ).toFixed(2) // term is being divided by 12 (months)
     return <span>{ "$" + numberWithCommas(monthly) }</span>
 }
     
@@ -129,10 +129,9 @@ CalculateMonthly(){
                         <span>Interest</span> 
                         <this.CalculateInterest />
                         </div>
-                    
-                    <div className="result-values"><span>Total Due</span> <this.CalculateTotal /></div>
+                    <div className="result-values"><span>Monthly</span> <this.CalculateMonthly/></div>
+                    <div className="result-values" style={{borderTop:"solid"}}><span >Loan Amount</span> <this.CalculateTotal /></div>
 
-                    {/* <div className="result-values"><span>Monthly Payments</span> <this.CalculateMonthly/></div> */}
                     </div >
                 
                 </div>

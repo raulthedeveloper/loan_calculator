@@ -24,9 +24,14 @@ function updateData(term,amount,interest){
   
 }
 
-useEffect(()=>{
 
-},[amount,interest,loanType])
+
+useEffect(() =>{
+  setTerm(term)
+  setAmount(amount)
+  setInterest(interest)
+  // eslint-disable-next-line
+},[])
 
 function updateLoanType(loanType){
   setLoanType(loanType)

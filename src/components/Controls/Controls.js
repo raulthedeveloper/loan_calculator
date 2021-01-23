@@ -20,7 +20,17 @@ export default class Controls extends Component {
         this.changeInterest = this.changeInterest.bind(this)      
     }
 
+    componentDidMount(){
+        this.setState({
+            term:2,
+            interest:7,
+            amount:10000
+        },()=> this.props.updateData(this.state.term,this.state.amount,this.state.interest))
+    }
    
+    
+
+
     changeAmount = amount => this.setState({
         amount
     },()=> this.props.updateData(this.state.term,this.state.amount,this.state.interest))

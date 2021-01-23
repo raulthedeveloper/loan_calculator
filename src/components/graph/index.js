@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Doughnut } from 'react-chartjs-2';
 
 
+
+
 class DoughnutChart extends Component{
    
 

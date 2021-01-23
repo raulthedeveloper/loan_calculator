@@ -18,12 +18,22 @@ function changeAmount(e){
 }
 
 function changeInterest(e){
-    props.changeInterest(e.target.value)
+    if(e.target.value >= interestMax){
+        props.changeInterest(interestMax)
+    }else{
+        props.changeInterest(e.target.value)
+    }
+    
 
 }
 
 function changeTerm(e){
-    props.changeTerm(e.target.value)
+    if(e.target.value >= termMax){
+        props.changeTerm(termMax)
+    }else{
+        props.changeTerm(e.target.value)
+    }
+    
 }
 
 
@@ -35,7 +45,7 @@ function changeTerm(e){
                 <input type="text" value={amount} className="text-field" onChange={e =>changeAmount(e)} />
                 
                 </div>
-                <label>Interest %</label>
+                <label>Interest % <span><em>(max interest {interestMax}%)</em></span></label>
                 <div className="slidecontainer">
 
                 <input type="range" min="1" max={interestMax.toString()} value={interest > interestMax ? interestMax : interest} className="slider" onChange={e => changeInterest(e)} id="myRange"/> 
@@ -43,7 +53,7 @@ function changeTerm(e){
                 <input type="text" value={interest > interestMax ? interestMax : interest} className="text-field" onChange={e => changeInterest(e)}/>   
 
                 </div>
-                <label>Term Length</label>
+                <label>Term Length <span><em>(max term {termMax} years)</em></span></label>
                 <div className="slidecontainer">
 
                 <input type="range" min="1" max={termMax.toString()} value={term > termMax ? termMax : term} className="slider" onChange={e => changeTerm(e)} id="myRange"/> 
