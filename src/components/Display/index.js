@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Chart from "../graph"
 import './display.css'
 
+
+//Adds commas to numbers to make them easier to read
 function numberWithCommas(x) {
     if(x === null || x === undefined){
       return "NA"
@@ -14,19 +16,25 @@ function numberWithCommas(x) {
 export default class index extends Component {
     constructor(props){
         super(props)
+              
         this.state = {
             title:props.payload.loanType,
             chartData:{},
-            interestTotal:this.getInterest()
+            interestTotal:this.getInterest(),
         }
     }
 
+
+
+//methods calculates the interest total to used in render
 getInterest = () =>{
     let {amount,interest,term} = this.props.payload
     return parseFloat(amount * (interest/100) * term).toFixed(2)
 }
 
-    
+//  calculate components take amount, interest, term values from props and calculates values
+// and return a span element with calculated values
+
 CalculateInterest = () =>{
     let {amount,interest,term} = this.props.payload
 return <span>${numberWithCommas(parseFloat(amount * (interest/100) * term).toFixed(2))}</span>
@@ -34,7 +42,7 @@ return <span>${numberWithCommas(parseFloat(amount * (interest/100) * term).toFix
 
 CalculateTotal = () =>{
     let {amount,interest,term} = this.props.payload
-    let total = parseInt(amount) + parseInt(parseFloat(amount * (interest/100) * term).toFixed(2))
+    let total = parseFloat(parseInt(amount) + amount * (interest/100) * term).toFixed(2)
 return <span>{"$" + numberWithCommas(total) }</span>
 }
 
@@ -45,7 +53,7 @@ CalculateMonthly = () =>{
     return <span>{ "$" + numberWithCommas(monthly) }</span>
 }
     
-
+// when component mounts the dounut chart data is set to state to be used as a prop to the chart component
     componentDidMount(){
         let {amount,interest,term} = this.props.payload
 
@@ -77,6 +85,7 @@ CalculateMonthly = () =>{
         
     }
     
+    // Checks if props change. When prop changes new values update chart state
     componentDidUpdate(nextProp){
         let {amount,interest,term} = this.props.payload
 

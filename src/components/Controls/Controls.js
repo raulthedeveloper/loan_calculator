@@ -20,6 +20,7 @@ export default class Controls extends Component {
         this.changeInterest = this.changeInterest.bind(this)      
     }
 
+    // Set initial State on startup
     componentDidMount(){
         this.setState({
             term:2,
@@ -30,7 +31,7 @@ export default class Controls extends Component {
    
     
 
-
+    // change methods set state from child and send state to parent with updateData prop.
     changeAmount = amount => this.setState({
         amount
     },()=> this.props.updateData(this.state.term,this.state.amount,this.state.interest))
@@ -44,7 +45,7 @@ export default class Controls extends Component {
     },()=> this.props.updateData(this.state.term,this.state.amount,this.state.interest))
     
 
-
+//Sets max values and loantype string to parent (App.js) to be sent to Display component for consumption
     loanPreset(termMax,interestMax,loanType){
         this.setState({
             termMax,

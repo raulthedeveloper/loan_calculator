@@ -17,6 +17,16 @@
     }
 }
 
+@media only screen and (max-width: 500px) {
+    .chart-container{
+        border-radius: 0;
+    }
+    h3{
+        font-size: 26px;
+    }
+}
+
+
 canvas{
     min-height: 300px;
 }
