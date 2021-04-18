@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Chart from "../graph"
+import Save from "./Save"
+import ViewLoans from './ViewLoans'
 import './display.css'
 
 
@@ -43,7 +45,7 @@ return <span>${numberWithCommas(parseFloat(amount * (interest/100) * term).toFix
 CalculateTotal = () =>{
     let {amount,interest,term} = this.props.payload
     let total = parseFloat(parseInt(amount) + amount * (interest/100) * term).toFixed(2)
-return <span>{"$" + numberWithCommas(total) }</span>
+return <span style={{fontWeight:"bold"}}>{"$" + numberWithCommas(total) }</span>
 }
 
 CalculateMonthly = () =>{
@@ -128,9 +130,8 @@ CalculateMonthly = () =>{
 
                 <Chart location={this.props.payload.loanType} chartData={this.state.chartData}  legendPosition="bottom"/>
                 
-                <div style={{display:"flex",flexDirection:"column",textAlign:'left',marginLeft:"1rem",lineHeight:'2.3rem'}}>
-                    <div style={{display:"flex", flexDirection:"column", justifyContent:'center'}}>
-
+                <div style={{marginLeft:"1rem",lineHeight:'2.3rem'}}>
+                   
 
                     <div className="result-values"><span>Principle</span> <span>{"$" + numberWithCommas(this.props.payload.amount)}</span></div>
 
@@ -139,9 +140,14 @@ CalculateMonthly = () =>{
                         <this.CalculateInterest />
                         </div>
                     <div className="result-values"><span>Monthly</span> <this.CalculateMonthly/></div>
-                    <div className="result-values" style={{borderTop:"solid"}}><span >Loan Amount</span> <this.CalculateTotal /></div>
+                    <div className="result-values" style={{borderTop:"solid"}}><span style={{fontWeight:"bold"}}>Loan Amount</span> <this.CalculateTotal /></div>
 
-                    </div >
+               <div className="save-buttons">
+               
+                <Save data={this.props.payload}/>
+
+                <ViewLoans />
+               </div>
                 
                 </div>
                 
