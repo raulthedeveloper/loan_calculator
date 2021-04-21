@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Chart from "../graph"
 import Save from "./Save"
 import ViewLoans from './ViewLoans'
+import DisplaySavedLoans from './DisplaySavedLoans'
 import './display.css'
 
 
@@ -23,6 +24,7 @@ export default class index extends Component {
             title:props.payload.loanType,
             chartData:{},
             interestTotal:this.getInterest(),
+            newData:Array
         }
     }
 
@@ -128,7 +130,9 @@ CalculateMonthly = () =>{
         return (
             <div className="chart-container">
 
-                <Chart location={this.props.payload.loanType} chartData={this.state.chartData}  legendPosition="bottom"/>
+            {
+                this.props.showLoans ? <DisplaySavedLoans/> : <div> 
+                    <Chart location={this.props.payload.loanType} chartData={this.state.chartData}  legendPosition="bottom"/>
                 
                 <div style={{marginLeft:"1rem",lineHeight:'2.3rem'}}>
                    
@@ -147,9 +151,17 @@ CalculateMonthly = () =>{
                 <Save data={this.props.payload}/>
 
                 <ViewLoans />
+
+                <button onClick={this.props.clear}>Clear Loans</button>
                </div>
                 
                 </div>
+
+
+                </div>
+            }
+
+                
                 
             </div>
         )

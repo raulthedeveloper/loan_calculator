@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 
-
+import GlobalContext from '../../store/global-context'
 
 export default function ViewLoans() {
-    const [view, setView ] = useState(false)
-
+   const context = useContext(GlobalContext)
+   
     const viewButton = () =>{
-        alert("View Loan has been pressed")
-        setView(true)
+        context.displayLoan(true)
     }
     
     return (

@@ -1,52 +1,118 @@
 import './App.css';
 import Controls from "./components/Controls/Controls"
 import Display from "./components/Display/index"
-
-import { useState } from 'react'
-
-
+import GlobalContext  from "./store/global-context"
+import { useState, useEffect } from 'react'
 
 
+
+let dataArray = []
 
 
 function App() {
 // Sets up component state
-let [term,setTerm] = useState(Number)
-let [ amount, setAmount ] = useState(Number)
-let [ interest, setInterest ] = useState(Number)
-let [ loanType, setLoanType ] = useState(String)
+
+// let [ loanType, setLoanType ] = useState(String)
+let [ loanData, setLoanData ] = useState(String)
+
+let [loan,setLoan] = useState({
+  term:Number,
+  amount:Number,
+  interest:Number,
+  loanType:String
+})
 
 
-// updateData is passed to Controls component in order to get values to set to local state
-function updateData(term,amount,interest){
-  setTerm(term)
-  setAmount(amount)
-  setInterest(interest)
+let [ save, setSave ] = useState({
+  savedData:Array,
+})
 
+let [ showLoans, setShowLoans ] = useState(false)
+
+
+
+
+async function saveHandler(loanName){
+ localStorage.removeItem('loans')
+  dataArray.push({name:loanName,loan})
+ setSave({dataArray})
+
+    
+   localStorage.setItem('loans',JSON.stringify(dataArray))
+
+
+    
+}
+
+
+function displayLoan(boolean){
+  
+
+  setShowLoans(boolean)
+  if(localStorage.getItem('loans')){
+    let loan = JSON.parse(localStorage.getItem('loans')).dataArray
+    setLoanData(loan)
+  }
   
 }
 
-// function is passed to controls to get loanType string from Controls component
-function updateLoanType(loanType){
-  setLoanType(loanType)
+function deleteHandler(){
+// Adds delete function to remove items
+
 }
 
 
 
+function clearLoans(){
+  // Wipes all loan data from local storage
+  let confirm = window.confirm("Are you sure you want to clear");
+  if(confirm){
+    localStorage.removeItem('loans')
+  setSave({})
+}
+  }
+  
+
+
+// updateData is passed to Controls component in order to get values to set to local state
+function updateData(term,amount,interest,loanType){
+  setLoan({term,amount,interest,loanType})
+  }
+
+
+
+useEffect(()=>{
+  updateData()
+  // updateLoanType()
+
+ 
+},[])
+
+
   return (
+    <GlobalContext.Provider value={{
+      save,
+      saveHandler,
+      displayLoan,
+      loanData
+    }
+      }>
     <div className="App">
     <div className="container">
       <div className="col">
-      <Controls updateData={updateData} updateLoanType={updateLoanType}/>
+      <Controls updateData={updateData} />  
+
+      {/* updateLoanType={loan.loanType} */}
       </div>
     <div className="col">
-    <Display payload={{term,amount,interest,loanType}}/>
+    <Display payload={loan} clear={clearLoans} showLoans={showLoans}/>
     </div>
 
      
     </div>
       
     </div>
+    </GlobalContext.Provider>
   );
 }
 
