@@ -3,7 +3,7 @@ import Controls from "./components/Controls/Controls"
 import Display from "./components/Display/index"
 import GlobalContext  from "./store/global-context"
 import { useState, useEffect } from 'react'
-
+import ClearList from '../src/Hooks/ClearList'
 
 
 let dataArray = []
@@ -23,31 +23,33 @@ let [loan,setLoan] = useState({
 })
 
 
-let [ save, setSave ] = useState({
-  savedData:Array,
-})
+let [ save, setSave ] = useState()
 
 let [ showLoans, setShowLoans ] = useState(false)
 
 
 
 
-async function saveHandler(loanName){
- localStorage.removeItem('loans')
-  dataArray.push({name:loanName,loan})
- setSave({dataArray})
+/////////////////////Handles Saving to local storage/////////////////
 
-    
+function saveHandler(loanName){
+  
+  dataArray.push({loanName,loan})
    localStorage.setItem('loans',JSON.stringify(dataArray))
-
+console.log(dataArray)
+   setSave(save =>[...(save || [] || {}), {loanName,loan}])
 
     
 }
 
 
+
+
+
+////////////////////// Displays loan///////////////////////////
+
 function displayLoan(boolean){
   
-
   setShowLoans(boolean)
   if(localStorage.getItem('loans')){
     let loan = JSON.parse(localStorage.getItem('loans')).dataArray
@@ -56,34 +58,44 @@ function displayLoan(boolean){
   
 }
 
-function deleteHandler(){
-// Adds delete function to remove items
-
-}
 
 
 
+
+
+ ///////////// Wipes all loan data from local storage/////////////////////////
 function clearLoans(){
-  // Wipes all loan data from local storage
+ 
   let confirm = window.confirm("Are you sure you want to clear");
   if(confirm){
-    localStorage.removeItem('loans')
+    localStorage.removeItem('loans');
+    console.log(save)
   setSave({})
 }
   }
   
 
-
-// updateData is passed to Controls component in order to get values to set to local state
+// updateData is passed to Controls component in order to get values to set to local state/////////
 function updateData(term,amount,interest,loanType){
   setLoan({term,amount,interest,loanType})
   }
 
 
 
+
+  function loadList(){
+    if(localStorage.getItem('loans')){
+      console.log(JSON.parse(localStorage.getItem('loans')))
+      setSave(save =>[...(save || [] || {}), ...JSON.parse(localStorage.getItem('loans'))])
+     
+    }
+  }
+
+
 useEffect(()=>{
+  loadList()
+  // setSave(JSON.parse(localStorage.getItem('loans')))
   updateData()
-  // updateLoanType()
 
  
 },[])
@@ -93,6 +105,7 @@ useEffect(()=>{
     <GlobalContext.Provider value={{
       save,
       saveHandler,
+      loan,
       displayLoan,
       loanData
     }

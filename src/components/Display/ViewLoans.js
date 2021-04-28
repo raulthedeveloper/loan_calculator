@@ -7,6 +7,7 @@ export default function ViewLoans() {
    
     const viewButton = () =>{
         context.displayLoan(true)
+        
     }
     
     return (

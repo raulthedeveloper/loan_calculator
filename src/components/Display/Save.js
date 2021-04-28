@@ -5,11 +5,15 @@ export default function Save(props) {
  
     const ctx = useContext(GlobalContext)
 
+    
+
      const saveButton =  () =>{
         // Save name of loan from loanName and Props to same object to be sent to View Loans
       const loanName = window.prompt("Name of the Loan?")
    
-        ctx.saveHandler(loanName)
+        ctx.saveHandler(loanName,ctx.loan,ctx.save)
+
+        // console.log(SaveHandler())
    
     }
    
