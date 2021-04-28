@@ -151,8 +151,11 @@ CalculateMonthly = () =>{
                 <Save data={this.props.payload}/>
 
                 <ViewLoans />
-
+                
+                <div>
                 <button onClick={this.props.clear}>Clear Loans</button>
+                </div>
+                
                </div>
                 
                 </div>

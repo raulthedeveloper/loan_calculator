@@ -17,6 +17,32 @@
 }
 
 
+.loan-list{
+    background-color: #8080801f;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 10px;
+}
+
+.delete-item{
+    background-color: red;
+    color: white;
+    padding: 3px;
+    height: 16px;
+    width: 16px;
+    border-radius: 18px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    float: right;
+}
+
+.delete-item:hover{
+    background-color: rgb(246, 120, 120);
+    color:#00000063;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 700px) {
     .chart-container{
         width: 100%;

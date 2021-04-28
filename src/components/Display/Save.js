@@ -11,9 +11,11 @@ export default function Save(props) {
         // Save name of loan from loanName and Props to same object to be sent to View Loans
       const loanName = window.prompt("Name of the Loan?")
    
-        ctx.saveHandler(loanName,ctx.loan,ctx.save)
+        if(loanName){
+            ctx.saveHandler(loanName,ctx.loan,ctx.save)
+        }
+        
 
-        // console.log(SaveHandler())
    
     }
    
