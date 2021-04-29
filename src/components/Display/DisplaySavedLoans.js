@@ -28,9 +28,9 @@ export default function DisplaySavedLoans() {
            {
                
                 !ctx.save ? <h3>No Loans saved</h3> :  ctx.save.map((e,index) =>{
-                        return <div className="loan-list">
+                        return <div key={index} className="loan-list">
                             <div className="delete-item" onClick={() => deleteItem(index)}>x</div>
-                            <ul style={{listStyle: 'none',paddingLeft: '10px'}} key={index} >
+                            <ul style={{listStyle: 'none',paddingLeft: '10px'}}  >
                                 <li>Name: {e.loanName}</li>
                                 <li>Years: {e.loan.term}</li>
                                 <li>Interest: {e.loan.interest}%</li>
