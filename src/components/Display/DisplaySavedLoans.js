@@ -6,7 +6,6 @@ import './display.css'
 export default function DisplaySavedLoans() {
     let ctx = useContext(GlobalContext)
 
-  console.log(...ctx.save)
 
    
     function back(){
@@ -14,10 +13,7 @@ export default function DisplaySavedLoans() {
         ctx.displayLoan(false)
     }
 
-    function deleteItem(index){
-        // pop item off of state and save new state to local host
-        console.log(index)
-    }
+    
       
       
 
@@ -29,9 +25,10 @@ export default function DisplaySavedLoans() {
                
                 !ctx.save ? <h3>No Loans saved</h3> :  ctx.save.map((e,index) =>{
                         return <div key={index} className="loan-list">
-                            <div className="delete-item" onClick={() => deleteItem(index)}>x</div>
+                            <div className="delete-item" onClick={() => ctx.deleteItem(index)}>x</div>
                             <ul style={{listStyle: 'none',paddingLeft: '10px'}}  >
                                 <li>Name: {e.loanName}</li>
+                                <li>Loan Type:</li>
                                 <li>Years: {e.loan.term}</li>
                                 <li>Interest: {e.loan.interest}%</li>
                                 <li>Amount: ${e.loan.amount}</li>
@@ -48,7 +45,7 @@ export default function DisplaySavedLoans() {
                 
                 
                 <div className="save-buttons">
-                <button>Email List</button>
+                <button>DownLoad List</button>
                 <SaveButton />
                 <button onClick={back}>Back</button>
                 </div>

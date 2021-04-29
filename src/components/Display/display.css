@@ -24,12 +24,17 @@
     margin-bottom: 10px;
 }
 
+.loan-list:hover{
+    background-color: #808080e3;
+    cursor: pointer;
+}
+
 .delete-item{
     background-color: red;
     color: white;
     padding: 3px;
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
     border-radius: 18px;
     text-align: center;
     font-size: 13px;

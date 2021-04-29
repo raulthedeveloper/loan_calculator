@@ -59,6 +59,27 @@ function displayLoan(boolean){
 }
 
 
+/////////// Delete List Item ///////////////
+function deleteItem(index){
+  let newValue = save
+  if(newValue.length >= 0){
+    newValue.splice(index,1)
+    console.log(newValue)
+    console.log(newValue.length)
+    
+  }
+
+  if(newValue.length === 0){
+    newValue = []
+    console.log(newValue)
+   
+  }
+  dataArray = newValue
+  setSave([])
+  setSave(save =>[...(save || [] || {}), ...newValue])
+  localStorage.setItem('loans',JSON.stringify(newValue))
+  
+}
 
 
 
@@ -85,7 +106,7 @@ function updateData(term,amount,interest,loanType){
 
   function loadList(){
     if(localStorage.getItem('loans')){
-      console.log(JSON.parse(localStorage.getItem('loans')))
+      // console.log(JSON.parse(localStorage.getItem('loans')))
       setSave(save =>[...(save || [] || {}), ...JSON.parse(localStorage.getItem('loans'))])
      
     }
@@ -94,7 +115,6 @@ function updateData(term,amount,interest,loanType){
 
 useEffect(()=>{
   loadList()
-  // setSave(JSON.parse(localStorage.getItem('loans')))
   updateData()
 
  
@@ -107,7 +127,8 @@ useEffect(()=>{
       saveHandler,
       loan,
       displayLoan,
-      loanData
+      loanData,
+      deleteItem
     }
       }>
     <div className="App">
@@ -115,7 +136,6 @@ useEffect(()=>{
       <div className="col">
       <Controls updateData={updateData} />  
 
-      {/* updateLoanType={loan.loanType} */}
       </div>
     <div className="col">
     <Display payload={loan} clear={clearLoans} showLoans={showLoans}/>
