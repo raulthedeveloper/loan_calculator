@@ -2,6 +2,14 @@ import React from 'react'
 import './ReadMe.css'
 
 export default function ReadMe({hideReadMe}) {
+
+    window.onclick = function(event) {
+        if (event.target.className === "modal") {
+          hideReadMe()
+        }
+        
+      }
+
     return (<div id="myModal" class="modal">
 
     <div class="modal-content">

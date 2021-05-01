@@ -2,7 +2,7 @@ import './App.css';
 import Controls from "./components/Controls/Controls"
 import Display from "./components/Display/index"
 import GlobalContext  from "./store/global-context"
-import { useState, useEffect,useReducer } from 'react'
+import { useState, useEffect } from 'react'
 import ReadMe from './components/ReadMe/ReadMe'
 import HotKey from './components/ReadMe/HotKeys'
 
@@ -10,31 +10,73 @@ import HotKey from './components/ReadMe/HotKeys'
 let dataArray = []
 
 
-const ACTIONS = {
-  ADD_LOAN:'add-loan',
-  CLEAR_LOANS: 'clear-loans',
-  SHOW_LOANS: 'show-loans',
-  LOAD_LOANS: 'load-loans'
+
+var map = {}; 
+onkeydown = onkeyup = function(e){
+    map[e.key] = e.type === 'keydown';
+    // console.log(map)
+    if(map["Shift"] && map["S"]){
+      alert('saved was pressed')
+      map = {}
+    }
+
+    if(map["Shift"] && map["E"]){
+      alert('Export was pressed')
+      map = {}
+    }
+
+    if(map["Shift"] && map["A"]){
+      alert('Auto Loan Button')
+      map = {}
+    }
+
+    if(map["Shift"] && map["M"]){
+      alert('Mortgage Button')
+      map = {}
+    }
+
+    if(map["Shift"] && map["P"]){
+      alert('Personal Loan Button')
+      map = {}
+    }
+
+    if(map["Shift"] && map["L"]){
+      alert('Loan Amount input')
+      map = {}
+    }
+
+    if(map["Shift"] && map["I"]){
+      alert('Interest Amount input')
+      map = {}
+    }
+
+    if(map["Shift"] && map["T"]){
+      alert('Term Amount input')
+      map = {}
+    }
+
+   
+
+    if(map["Shift"] && map["V"]){
+      alert('View Loans Button')
+      map = {}
+    }
+
+    if(map["Shift"] && map["Delete"]){
+      alert('Clear Loans Button')
+      map = {}
+    }
+
+  // Clears map object to prevent size doesnt go past 2
+   if(Object.keys(map).length >= 2){
+     map = {}
+   }
 }
-
-
 
 
 
 function App() {
 // Sets up component state
-const [ loans, dispatch ] = useReducer(reducer,{
-  save:null
-})
-
-function reducer(loans,action){
-  switch(action.type){
-    case ACTIONS.ADD_LOAN:
-    
-      default:
-        throw new Error();
-  }
-}
 
 
 // let [ loanType, setLoanType ] = useState(String)
@@ -180,7 +222,6 @@ function showHotKeys(){
 function hideHotKeys(){
   setHotKeys(false)
 }
-
 
 
 

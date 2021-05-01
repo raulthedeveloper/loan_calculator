@@ -1,4 +1,4 @@
-import React, { useContext,useState,useEffect } from 'react'
+import React, { useContext } from 'react'
 import GlobalContext from '../../store/global-context'
 import SaveButton from './Save'
 import './display.css'
