@@ -3,6 +3,8 @@ import Controls from "./components/Controls/Controls"
 import Display from "./components/Display/index"
 import GlobalContext  from "./store/global-context"
 import { useState, useEffect,useReducer } from 'react'
+import ReadMe from './components/ReadMe/ReadMe'
+import HotKey from './components/ReadMe/HotKeys'
 
 
 let dataArray = []
@@ -52,7 +54,9 @@ let [ showLoans, setShowLoans ] = useState(false)
 
 let [ listItem, setListItem ] = useState(false)
 
+let [ readMe, setReadMe ] = useState(false)
 
+let [ hotKeys, setHotKeys] = useState(false)
 
 /////////////////////Handles Saving to local storage/////////////////
 
@@ -126,7 +130,6 @@ function clearLoans(){
   let confirm = window.confirm("Are you sure you want to clear");
   if(confirm){
     localStorage.removeItem('loans');
-    console.log(save)
   setSave({})
 }
   }
@@ -146,7 +149,7 @@ function updateData(term,amount,interest,loanType){
 
 
 
-///////// when page loads checks if localstorage exist if it does it updates the dataArray and save state
+///////// when page loads checks if localstorage exist if it does it updates the dataArray and save state /////////////
   function loadList(){
     setSave([])
 
@@ -157,6 +160,29 @@ function updateData(term,amount,interest,loanType){
     }
   
   }
+
+
+
+
+/////////// Shows Read Me /////////////////
+ function showReadMe(){
+    setReadMe(true)
+}
+
+function hideReadMe(){
+  setReadMe(false)
+}
+
+function showHotKeys(){
+  setHotKeys(true)
+}
+
+function hideHotKeys(){
+  setHotKeys(false)
+}
+
+
+
 
 
 useEffect(()=>{
@@ -175,13 +201,21 @@ useEffect(()=>{
       displayLoan,
       loanData,
       deleteItem,
-      updateCurrentChart
+      updateCurrentChart,
     }
       }>
     <div className="App">
+      {
+       readMe ? <ReadMe hideReadMe={hideReadMe}/> : null
+      }
+
+      {
+        hotKeys ? <HotKey hideHotKeys={hideHotKeys}/> : null
+      }
+      
     <div className="container">
       <div className="col">
-      <Controls listItem={listItem} payload={loan} updateData={updateData} />  
+      <Controls showReadMe={showReadMe} showHotKeys={showHotKeys} listItem={listItem} payload={loan} updateData={updateData} />  
 
       </div>
     <div className="col">

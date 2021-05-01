@@ -75,6 +75,8 @@ export default class Controls extends Component {
         })
     }
 
+    
+
 
     render() {
         return (
@@ -84,7 +86,8 @@ export default class Controls extends Component {
 
                 <Sliders data={this.state} sliderValue={this.sliderValue} changeAmount={this.changeAmount} changeTerm={this.changeTerm} changeInterest={this.changeInterest}/>
 
-
+                <button onClick={this.props.showReadMe}>Read More</button>
+                <button onClick={this.props.showHotKeys}>Hot Keys</button>
       </div>
         )
     }

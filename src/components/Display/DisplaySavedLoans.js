@@ -20,7 +20,8 @@ export default function DisplaySavedLoans() {
     return (
         <div>
            <h1 style={{textAlign:'center'}}>Saved Loans</h1>
-           <div >
+           
+           <div style={{overflow:'scroll',height:'600px',overflowX:'hidden'}}>
            {
                
                 !ctx.save ? <h3>No Loans saved</h3> :  ctx.save.map((e,index) =>{
@@ -28,7 +29,7 @@ export default function DisplaySavedLoans() {
                             <div className="delete-item" onClick={() => ctx.deleteItem(index)}>x</div>
                             <ul onClick={() => ctx.updateCurrentChart(index)} style={{listStyle: 'none',paddingLeft: '10px'}}  >
                                 <li>Name: {e.loanName}</li>
-                                <li>Loan Type:</li>
+                                <li>Loan Type: {e.loan.loanType}</li>
                                 <li>Years: {e.loan.term}</li>
                                 <li>Interest: {e.loan.interest}%</li>
                                 <li>Amount: ${e.loan.amount}</li>
@@ -45,7 +46,7 @@ export default function DisplaySavedLoans() {
                 
                 
                 <div className="save-buttons">
-                <button>DownLoad List</button>
+                <button>Export</button>
                 <SaveButton />
                 <button onClick={back}>Back</button>
                 </div>
