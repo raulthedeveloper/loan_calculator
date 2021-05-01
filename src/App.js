@@ -2,15 +2,38 @@ import './App.css';
 import Controls from "./components/Controls/Controls"
 import Display from "./components/Display/index"
 import GlobalContext  from "./store/global-context"
-import { useState, useEffect } from 'react'
-import ClearList from '../src/Hooks/ClearList'
+import { useState, useEffect,useReducer } from 'react'
 
 
 let dataArray = []
 
 
+const ACTIONS = {
+  ADD_LOAN:'add-loan',
+  CLEAR_LOANS: 'clear-loans',
+  SHOW_LOANS: 'show-loans',
+  LOAD_LOANS: 'load-loans'
+}
+
+
+
+
+
 function App() {
 // Sets up component state
+const [ loans, dispatch ] = useReducer(reducer,{
+  save:null
+})
+
+function reducer(loans,action){
+  switch(action.type){
+    case ACTIONS.ADD_LOAN:
+    
+      default:
+        throw new Error();
+  }
+}
+
 
 // let [ loanType, setLoanType ] = useState(String)
 let [ loanData, setLoanData ] = useState(String)
@@ -27,20 +50,18 @@ let [ save, setSave ] = useState()
 
 let [ showLoans, setShowLoans ] = useState(false)
 
+let [ listItem, setListItem ] = useState(false)
 
 
 
 /////////////////////Handles Saving to local storage/////////////////
 
 function saveHandler(loanName){
-  
   dataArray.push({loanName,loan})
-   localStorage.setItem('loans',JSON.stringify(dataArray))
-console.log(dataArray)
-   setSave(save =>[...(save || [] || {}), {loanName,loan}])
-
-    
+    setSave(save =>[...(save || [] || {}), {loanName,loan}])
+    localStorage.setItem('loans',JSON.stringify(dataArray))
 }
+
 
 
 
@@ -82,6 +103,21 @@ function deleteItem(index){
 }
 
 
+///////////// Updates graph when user clicks on saved loan item//////////////////////
+function updateCurrentChart(index){
+  updateData(
+    save[index].loan.term,
+    save[index].loan.amount,
+    save[index].loan.interest,
+    save[index].loan.loanType
+  )
+  setShowLoans(false)
+  setListItem(true)
+}
+
+
+
+
 
 
  ///////////// Wipes all loan data from local storage/////////////////////////
@@ -96,7 +132,11 @@ function clearLoans(){
   }
   
 
-// updateData is passed to Controls component in order to get values to set to local state/////////
+
+
+
+
+////// updateData is passed to Controls component in order to get values to set to local state/////////
 function updateData(term,amount,interest,loanType){
   setLoan({term,amount,interest,loanType})
   }
@@ -104,12 +144,18 @@ function updateData(term,amount,interest,loanType){
 
 
 
+
+
+///////// when page loads checks if localstorage exist if it does it updates the dataArray and save state
   function loadList(){
+    setSave([])
+
     if(localStorage.getItem('loans')){
-      // console.log(JSON.parse(localStorage.getItem('loans')))
+      dataArray.push(...JSON.parse(localStorage.getItem('loans')))
       setSave(save =>[...(save || [] || {}), ...JSON.parse(localStorage.getItem('loans'))])
-     
+      
     }
+  
   }
 
 
@@ -128,17 +174,18 @@ useEffect(()=>{
       loan,
       displayLoan,
       loanData,
-      deleteItem
+      deleteItem,
+      updateCurrentChart
     }
       }>
     <div className="App">
     <div className="container">
       <div className="col">
-      <Controls updateData={updateData} />  
+      <Controls listItem={listItem} payload={loan} updateData={updateData} />  
 
       </div>
     <div className="col">
-    <Display payload={loan} clear={clearLoans} showLoans={showLoans}/>
+    <Display  payload={loan} clear={clearLoans} showLoans={showLoans}/>
     </div>
 
      

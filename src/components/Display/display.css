@@ -40,6 +40,7 @@
     font-size: 13px;
     font-weight: bold;
     float: right;
+    z-index: 4;
 }
 
 .delete-item:hover{

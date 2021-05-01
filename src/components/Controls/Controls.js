@@ -25,15 +25,29 @@ export default class Controls extends Component {
         this.setState({      
             term:2,
             interest:7,
-            amount:10000
+            amount:20000
         },()=> this.props.updateData(this.state.term,this.state.amount,this.state.interest,this.state.loanType))
     }
 
     componentDidUpdate(pP,pS,sS){
         if(pS.loanType !== this.state.loanType){
             this.props.updateData(this.state.term,this.state.amount,this.state.interest,this.state.loanType)
-            
+
         }
+
+        // I have to update the state from the payload
+        // I just need to come up with a conditional to trigger the update
+
+
+        // if(pP.payload.loanType !== this.state.loanType){
+        //     console.log('did update fired')
+        //     this.setState({
+        //         term:this.props.payload.term,
+        //         amount:this.props.payload.amount,
+        //         interest:this.props.payload.interest,
+        //         loanType:this.props.payload.loanType
+        //     })
+        // }
     }
    
     

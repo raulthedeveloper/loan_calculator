@@ -4,9 +4,11 @@ import './controls.css'
 
 
 
-
 export default function Sliders(props) {
   
+
+
+
 let {interestMax,termMax,interest,term,amount } = props.data
 
 // Contraints wont let user input values higher than maximum
