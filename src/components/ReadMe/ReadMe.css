@@ -22,6 +22,12 @@
     width: 80%;
     border-radius: 10px;
   }
+
+  .modal-content h4, h2{
+    text-align: center;
+    border-bottom: solid 1px;
+    padding-bottom: 1rem;
+  }
   
   /* The Close Button */
   .close {

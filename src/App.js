@@ -5,79 +5,78 @@ import GlobalContext  from "./store/global-context"
 import { useState, useEffect } from 'react'
 import ReadMe from './components/ReadMe/ReadMe'
 import HotKey from './components/ReadMe/HotKeys'
-
+import useHotKeys from './Hooks/useHotKeys'
 
 let dataArray = []
 
 
 
-var map = {}; 
-onkeydown = onkeyup = function(e){
-    map[e.key] = e.type === 'keydown';
-    // console.log(map)
-    if(map["Shift"] && map["S"]){
-      alert('saved was pressed')
-      map = {}
-    }
+// var map = {}; 
+// onkeydown = onkeyup = function(e){
+//     map[e.key] = e.type === 'keydown';
+//     // console.log(map)
+//     if(map["Shift"] && map["S"]){
+//       alert('saved was pressed')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["E"]){
-      alert('Export was pressed')
-      map = {}
-    }
+//     if(map["Shift"] && map["E"]){
+//       alert('Export was pressed')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["A"]){
-      alert('Auto Loan Button')
-      map = {}
-    }
+//     if(map["Shift"] && map["A"]){
+//       alert('Auto Loan Button')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["M"]){
-      alert('Mortgage Button')
-      map = {}
-    }
+//     if(map["Shift"] && map["M"]){
+//       alert('Mortgage Button')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["P"]){
-      alert('Personal Loan Button')
-      map = {}
-    }
+//     if(map["Shift"] && map["P"]){
+//       alert('Personal Loan Button')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["L"]){
-      alert('Loan Amount input')
-      map = {}
-    }
+//     if(map["Shift"] && map["L"]){
+//       alert('Loan Amount input')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["I"]){
-      alert('Interest Amount input')
-      map = {}
-    }
+//     if(map["Shift"] && map["I"]){
+//       alert('Interest Amount input')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["T"]){
-      alert('Term Amount input')
-      map = {}
-    }
+//     if(map["Shift"] && map["T"]){
+//       alert('Term Amount input')
+//       map = {}
+//     }
 
    
 
-    if(map["Shift"] && map["V"]){
-      alert('View Loans Button')
-      map = {}
-    }
+//     if(map["Shift"] && map["V"]){
+//       alert('View Loans Button')
+//       map = {}
+//     }
 
-    if(map["Shift"] && map["Delete"]){
-      alert('Clear Loans Button')
-      map = {}
-    }
+//     if(map["Shift"] && map["Delete"]){
+//       alert('Clear Loans Button')
+//       map = {}
+//     }
 
-  // Clears map object to prevent size doesnt go past 2
-   if(Object.keys(map).length >= 2){
-     map = {}
-   }
-}
+//   // Clears map object to prevent size doesnt go past 2
+//    if(Object.keys(map).length >= 2){
+//      map = {}
+//    }
+// }
 
 
 
 function App() {
 // Sets up component state
-
 
 // let [ loanType, setLoanType ] = useState(String)
 let [ loanData, setLoanData ] = useState(String)
@@ -99,6 +98,8 @@ let [ listItem, setListItem ] = useState(false)
 let [ readMe, setReadMe ] = useState(false)
 
 let [ hotKeys, setHotKeys] = useState(false)
+
+
 
 /////////////////////Handles Saving to local storage/////////////////
 
@@ -237,6 +238,7 @@ useEffect(()=>{
   return (
     <GlobalContext.Provider value={{
       save,
+      clearLoans,
       saveHandler,
       loan,
       displayLoan,

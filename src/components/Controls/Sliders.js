@@ -1,5 +1,6 @@
 import { React } from 'react'
 import './controls.css'
+import useHotKeys from '../../Hooks/useHotKeys'
 
 
 
@@ -19,6 +20,25 @@ let termConstraint = term >= termMax ? termMax : term
 //   Change amount method is sent to slider componenent and value 
 //   from sliders and input is sent to the parent (Control component) with change methods
   
+
+
+useHotKeys('u', () => {
+   
+    document.getElementById("amount").focus();
+    document.getElementById("amount").select();
+   })
+
+   useHotKeys('i', () => {
+    document.getElementById("interest").focus();
+    document.getElementById("interest").select();
+   })
+
+   useHotKeys('o', () => {
+    document.getElementById("term").focus();
+    document.getElementById("term").select();
+   })
+
+
 function changeAmount(e){
     if(e.target.value < 0){
         props.changeAmount(1)
@@ -59,7 +79,7 @@ function changeTerm(e){
             <div className="slidecontainer">
 
                 <input type="range" min="1" max="1000000" value={amount} className="slider" onChange={(e)=>changeAmount(e)} id="myRange"/> 
-                <input type="number" value={amount} className="text-field" onChange={e =>changeAmount(e)} />
+                <input id="amount"  type="number" value={amount} className="text-field" onChange={e =>changeAmount(e)} />
                 
                 </div>
                 <label>Interest % <span><em>(max interest {interestMax}%)</em></span></label>
@@ -67,7 +87,7 @@ function changeTerm(e){
 
                 <input type="range" min="1" max={interestMax.toString()} value={interestConstraint} className="slider" onChange={e => changeInterest(e)} id="myRange"/> 
 
-                <input type="number" value={interestConstraint} className="text-field" onChange={e => changeInterest(e)}/>   
+                <input id="interest" type="number" value={interestConstraint} className="text-field" onChange={e => changeInterest(e)}/>   
 
                 </div>
                 <label>Term Length <span><em>(max term {termMax} years)</em></span></label>
@@ -75,7 +95,7 @@ function changeTerm(e){
 
                 <input type="range" min="1" max={termMax.toString()} value={termConstraint} className="slider" onChange={e => changeTerm(e)} id="myRange"/> 
 
-                <input type="number" value={termConstraint} className="text-field" onChange={e =>changeTerm(e)}/>            
+                <input id="term" type="number" value={termConstraint} className="text-field" onChange={e =>changeTerm(e)}/>            
 
                 </div>
         </div>

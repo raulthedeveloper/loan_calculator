@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
+.activated{
+    background-color: #808080e3;
+}
+
 .delete-item{
     background-color: red;
     color: white;

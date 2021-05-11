@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../../store/global-context'
+import useHotKeys from '../../Hooks/useHotKeys'
 
 export default function Save(props) {
  
     const ctx = useContext(GlobalContext)
 
-    
+    useHotKeys('s', () => {
+        saveButton()
+      })
 
      const saveButton =  () =>{
         // Save name of loan from loanName and Props to same object to be sent to View Loans
@@ -22,7 +25,7 @@ export default function Save(props) {
     
     return (
         <div>
-            <button onClick={saveButton}>Save</button>
+            <button className="app-button" onClick={saveButton}>Save</button>
         </div>
     )
 }

@@ -1,9 +1,14 @@
-import React from 'react'
+import { useEffect } from 'react'
 
-export default function useHotKeys() {
-    return (
-        <div>
-            
-        </div>
-    )
+export default function useHotKeys(key, action) {
+   
+
+useEffect(() => {
+    function onKeyup(e) {
+      if (e.key === key) action()
+    }
+    window.addEventListener('keyup', onKeyup);
+    return () => window.removeEventListener('keyup', onKeyup);
+  }, []);    
+
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import useHotKeys from '../../Hooks/useHotKeys'
 
 import GlobalContext from '../../store/global-context'
 
@@ -9,10 +10,14 @@ export default function ViewLoans() {
         context.displayLoan(true)
         
     }
+
+    useHotKeys('v', () => {
+        viewButton()
+      })
     
     return (
         <div>
-            <button onClick={viewButton}>View Loans</button>
+            <button className="app-button" onClick={viewButton}>View Loans</button>
         </div>
     )
 }

@@ -13,9 +13,11 @@
     background-color: #a94931;
 }
 
+
+
 .btn:active{
     border: solid white 1px;
-    background-color: #eb8f77;
+    background-color: #c04e32;
 }
 
 .loan-button{

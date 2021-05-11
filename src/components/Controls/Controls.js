@@ -85,9 +85,11 @@ export default class Controls extends Component {
                 <LoanButton presets={this.loanPreset} />
 
                 <Sliders data={this.state} sliderValue={this.sliderValue} changeAmount={this.changeAmount} changeTerm={this.changeTerm} changeInterest={this.changeInterest}/>
-
-                <button onClick={this.props.showReadMe}>Read More</button>
-                <button onClick={this.props.showHotKeys}>Hot Keys</button>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
+                <button className="app-button"  onClick={this.props.showReadMe}>Read More</button>
+                <button className="app-button" onClick={this.props.showHotKeys}>Hot Keys</button>
+                </div>
+                
       </div>
         )
     }

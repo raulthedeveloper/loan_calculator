@@ -8,6 +8,34 @@
     margin-top: 5rem;
 }
 
+.app-button{
+    background-color: #F77757;
+    color: white;
+    padding: 6px;
+    font-size: 15px;
+    border: inherit;
+}
+
+.active-button{
+    background-color: #c04e32;
+    color: white;
+    padding: 6px;
+    margin-right: 10px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    border: inherit;
+    width: 8rem;
+}
+
+.app-button:hover{
+    background-color: #a94931;
+}
+
+.app-button:active{
+    border: solid white 1px;
+    background-color: #eb8f77;
+}
+
 @media only screen and (max-width: 700px) {
     .container{
         flex-direction: column-reverse;

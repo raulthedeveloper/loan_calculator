@@ -2,12 +2,30 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../store/global-context'
 import SaveButton from './Save'
 import './display.css'
+import useHotKeys from '../../Hooks/useHotKeys'
 
 export default function DisplaySavedLoans() {
     let ctx = useContext(GlobalContext)
 
-
+    useHotKeys('b', () => {
+       back()
+      })
    
+
+      useHotKeys('c', () => {
+        ctx.clearLoans()
+      })
+
+      useHotKeys('e', () => {
+        exportList()
+      })
+
+
+
+      function exportList(){
+        alert("list has been exported")
+      }
+
     function back(){
        
         ctx.displayLoan(false)
@@ -46,9 +64,12 @@ export default function DisplaySavedLoans() {
                 
                 
                 <div className="save-buttons">
-                <button>Export</button>
+                <button className="app-button" onClick={exportList}>Export</button>
                 <SaveButton />
-                <button onClick={back}>Back</button>
+                <div>
+                <button className="app-button" onClick={ctx.clearLoans}>Clear Loans</button>
+                </div>
+                <button className="app-button" onClick={back}>Back</button>
                 </div>
 
                 
