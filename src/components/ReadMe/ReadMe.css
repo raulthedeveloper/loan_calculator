@@ -25,7 +25,6 @@
 
   .modal-content h4, h2{
     text-align: center;
-    border-bottom: solid 1px;
     padding-bottom: 1rem;
   }
   
@@ -42,4 +41,8 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .hotkey-list{
+    background-color: grey;
   }

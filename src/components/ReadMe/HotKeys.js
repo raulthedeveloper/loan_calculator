@@ -14,8 +14,8 @@ export default function HotKeys({hideHotKeys}) {
     <div class="modal-content">
       <span onClick={hideHotKeys} class="close">&times;</span>
       <h2>Hot Keys</h2>
-      <div style={{display: 'flex', justifyContent: 'space-around'}}>
-      <div >
+      <div className="hotkey-container" style={{display: 'flex', justifyContent: 'space-around'}}>
+                  <div >
                     <h4>Loan Presets</h4>
                     <ul>
                         <li>Auto Loan: Q</li>
@@ -38,7 +38,7 @@ export default function HotKeys({hideHotKeys}) {
                     <h4>View Loans</h4>
                     <ul>
                         <li>Save: S</li>
-                        <li>Export: E</li>
+                        <li>Export: X</li>
                         <li>Back: B</li>
                     </ul>
                     </div> 
