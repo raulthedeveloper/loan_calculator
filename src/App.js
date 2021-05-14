@@ -5,7 +5,6 @@ import GlobalContext  from "./store/global-context"
 import { useState, useEffect } from 'react'
 import ReadMe from './components/ReadMe/ReadMe'
 import HotKey from './components/ReadMe/HotKeys'
-import useHotKeys from './Hooks/useHotKeys'
 
 let dataArray = []
 
@@ -115,9 +114,6 @@ function clearLoans(){
 }
   }
   
-
-
-
 
 
 ////// updateData is passed to Controls component in order to get values to set to local state/////////

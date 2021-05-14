@@ -9,6 +9,7 @@ useEffect(() => {
     }
     window.addEventListener('keyup', onKeyup);
     return () => window.removeEventListener('keyup', onKeyup);
+    // eslint-disable-next-line
   }, []);    
 
 }
