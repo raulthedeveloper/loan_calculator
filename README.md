@@ -11,7 +11,8 @@ The Weather Application is designed to consume a Weather API that provides the a
 
 ***
 
-
+### Visit Site
+[Loan Calculator](https://loan-calculator-eight.vercel.app/)
 
 
 # Getting Started with Create React App
