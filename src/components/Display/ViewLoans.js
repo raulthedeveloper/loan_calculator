@@ -17,7 +17,7 @@ export default function ViewLoans() {
     
     return (
         <div>
-            <button className="app-button" onClick={viewButton}>View Loans</button>
+            <button className="bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={viewButton}>View Loans</button>
         </div>
     )
 }

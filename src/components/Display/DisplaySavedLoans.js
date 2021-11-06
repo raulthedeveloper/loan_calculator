@@ -77,12 +77,12 @@ export default function DisplaySavedLoans() {
                 
                 
                 <div className="save-buttons">
-                <button className="app-button" onClick={exportList}>Export</button>
+                <button className="bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={exportList}>Export</button>
                 <SaveButton />
                 <div>
-                <button className="app-button" style={ctx.save.length === 0 ? {background:"#f7775775"} : null} disabled={ctx.save.length === 0 || !ctx.save} onClick={ctx.clearLoans}>Clear Loans</button>
+                <button className="bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" style={ctx.save.length === 0 ? {background:"#f7775775"} : null} disabled={ctx.save.length === 0 || !ctx.save} onClick={ctx.clearLoans}>Clear Loans</button>
                 </div>
-                <button className="app-button" onClick={back}>Back</button>
+                <button className="bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={back}>Back</button>
                 </div>
 
                 

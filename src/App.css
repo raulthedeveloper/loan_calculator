@@ -4,7 +4,7 @@
 
 
 
-.container{
+/* .container{
     padding: 2rem;
     display: flex;
     flex-direction: row;
@@ -12,25 +12,20 @@
     height: 100vh;
     width: 100%;
     margin-top: 5rem;
-}
+} */
 
-.app-button{
+/* .app-button{
     background-color: #F77757;
     color: white;
     padding: 6px;
     font-size: 15px;
     border: inherit;
-}
+} */
 
 .active-button{
     background-color: #c04e32;
-    color: white;
-    padding: 6px;
-    margin-right: 10px;
-    margin-bottom: 1rem;
-    font-size: 15px;
+    
     border: inherit;
-    width: 8rem;
 }
 
 .app-button:hover{
@@ -42,35 +37,9 @@
     background-color: #eb8f77;
 }
 
-@media only screen and (max-width: 700px) {
-    .container{
-        flex-direction: column-reverse;
-        margin-top: 1rem;
 
-    }
-}
 
-@media only screen and (max-width: 500px) {
-    .container{
-        width: initial;
-        height: initial;
-        padding: .5rem;
-        padding-top: 0;
-        margin-top: 0;
-        
-    }
-    .col{
-        max-height: initial;
-        min-height: initial;
-    }
-}
 
-.col{
-    min-width: 50%;
-    display: flex;
-    justify-content: center;
-    max-height: 800px;
-}
 
 .app{
     height: 100%;

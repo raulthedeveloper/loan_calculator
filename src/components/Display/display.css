@@ -1,13 +1,11 @@
-.chart-container{
+/* .chart-container{
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 8px;
     width: 60%;
-    /* max-width: 350px; */
     padding: 2rem;
-    /* height: 86%; */
-}
+} */
 
 .save-buttons{
     padding-left: 1.2rem;

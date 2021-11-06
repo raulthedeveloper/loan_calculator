@@ -25,7 +25,7 @@ export default function Save(props) {
     
     return (
         <div>
-            <button className="app-button" onClick={saveButton}>Save</button>
+            <button className="bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={saveButton}>Save</button>
         </div>
     )
 }

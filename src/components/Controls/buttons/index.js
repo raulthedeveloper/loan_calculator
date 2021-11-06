@@ -28,6 +28,8 @@ function handleActive(id){
 
 }
 
+
+
 export default function LoanButtons(props) {
 
 
@@ -82,9 +84,9 @@ function personLoan(){
     return (
         <div className="loan-buttons" style={{marginBottom:'2rem'}}>
             <h3 style={{color:"white"}}>Loan Presets</h3>
-                <button id="auto-loan" className="btn" onClick={ autoLoan }>Auto Loan</button>
-                <button id="mortgage" className="btn" onClick={ mortage }>Mortgage</button>
-                <button id="personal" className="btn" onClick={ personLoan }>Personal Loan</button>
+                <button id="auto-loan" className="bg-red-700 mr-3  hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={ autoLoan }>Auto Loan</button>
+                <button id="mortgage" className="bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={ mortage }>Mortgage</button>
+                <button id="personal" className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 md:mt-0 mt-3 px-4 rounded" onClick={ personLoan }>Personal Loan</button>
                 </div>
     )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../App.css';
 import Controls from "../Controls/Controls"
 import Display from "../Display/index"
@@ -6,7 +5,6 @@ import GlobalContext  from "../../store/global-context"
 import { useState, useEffect } from 'react'
 import ReadMe from '../ReadMe/ReadMe'
 import HotKey from '../ReadMe/HotKeys'
-import NavBar from '../includes/NavBar'
 
 
 let dataArray = []
@@ -181,7 +179,7 @@ useEffect(()=>{
       updateCurrentChart,
     }
       }>
-    <div className="App">
+    <div className="App py-10 ">
       {
        readMe ? <ReadMe hideReadMe={hideReadMe}/> : null
       }
@@ -190,14 +188,18 @@ useEffect(()=>{
         hotKeys ? <HotKey hideHotKeys={hideHotKeys}/> : null
       }
       
-    <div className="container">
-      <div className="col">
+    <div className="container flex justify-center	m-auto ">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="">
       <Controls showReadMe={showReadMe} showHotKeys={showHotKeys} listItem={listItem} payload={loan} updateData={updateData} />  
 
       </div>
-    <div className="col">
+    <div className="">
     <Display  payload={loan} clear={clearLoans} showLoans={showLoans}/>
     </div>
+      </div>
+      
 
      
     </div>

@@ -80,14 +80,14 @@ export default class Controls extends Component {
 
     render() {
         return (
-            <div className="controls">
+            <div className="controls bg-indigo-300  bg-opacity-50">
 
                 <LoanButton presets={this.loanPreset} />
 
                 <Sliders data={this.state} sliderValue={this.sliderValue} changeAmount={this.changeAmount} changeTerm={this.changeTerm} changeInterest={this.changeInterest}/>
                 <div style={{display:'flex', justifyContent:'space-between'}}>
-                <button className="app-button"  onClick={this.props.showReadMe}>Read More</button>
-                <button className="app-button" onClick={this.props.showHotKeys}>Hot Keys</button>
+                <button className=" bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"  onClick={this.props.showReadMe}>Read More</button>
+                <button className=" bg-red-700 mr-3 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={this.props.showHotKeys}>Hot Keys</button>
                 </div>
                 
       </div>

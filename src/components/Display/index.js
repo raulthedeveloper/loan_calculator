@@ -128,7 +128,7 @@ CalculateMonthly = () =>{
 
     render() {
         return (
-            <div className="chart-container">
+            <div className="container bg-white py-5 rounded-md">
 
             {
                 this.props.showLoans ? <DisplaySavedLoans/> : <div> 
