@@ -6,11 +6,22 @@ import { useState, useEffect } from 'react'
 import ReadMe from '../ReadMe/ReadMe'
 import HotKey from '../ReadMe/HotKeys'
 
+import { useParams } from 'react-router';
+
 
 let dataArray = []
 
 
 const LoanCalculator = () => {
+
+
+
+
+
+
+
+
+  
     // Sets up component state
 
 // let [ loanType, setLoanType ] = useState(String)
@@ -22,6 +33,8 @@ let [loan,setLoan] = useState({
   interest:Number,
   loanType:String
 })
+
+let [demo, setDemo] = useState(Boolean)
 
 
 let [ save, setSave ] = useState()
@@ -160,6 +173,7 @@ function hideHotKeys(){
 
 
 useEffect(()=>{
+  setDemo(true)
   loadList()
   updateData()
 
@@ -170,6 +184,7 @@ useEffect(()=>{
   return (
     <GlobalContext.Provider value={{
       save,
+      demo,
       clearLoans,
       saveHandler,
       loan,

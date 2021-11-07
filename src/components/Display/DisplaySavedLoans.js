@@ -44,8 +44,8 @@ export default function DisplaySavedLoans() {
         ctx.displayLoan(false)
     }
 
-    
-      
+   console.log(ctx.save)
+   console.log(ctx.demo)
       
 
     return (
@@ -59,11 +59,11 @@ export default function DisplaySavedLoans() {
                         return <div key={index}  className="loan-list">
                             <div className="delete-item" onClick={() => ctx.deleteItem(index)}>x</div>
                             <ul onClick={() => ctx.updateCurrentChart(index)} style={{listStyle: 'none',paddingLeft: '10px'}}  >
-                                <li>Name: {e.loanName}</li>
-                                <li>Loan Type: {e.loan.loanType}</li>
-                                <li>Years: {e.loan.term}</li>
-                                <li>Interest: {e.loan.interest}%</li>
-                                <li>Amount: ${e.loan.amount}</li>
+                                <li>Name: {ctx.demo ? e.loanName : e.name}</li>
+                                <li>Loan Type: {ctx.demo ? e.loan.loanType : e.loanType}</li>
+                                <li>Years: {ctx.demo ? e.loan.term : e.term}</li>
+                                <li>Interest: {ctx.demo ? e.loan.interest : e.interest}%</li>
+                                <li>Amount: ${ctx.demo ? e.loan.amount : e.amount}</li>
                                 </ul>
                                 
                                 </div>

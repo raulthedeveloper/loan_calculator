@@ -8,9 +8,9 @@ import {Link } from "react-router-dom";
 
 const navigation = [
   { name: 'Home', href: '/', current: false },
-  { name: 'Login', href: '/login', current: true},
+  { name: 'Login', href: '/login', current: false},
   { name: 'Register', href: '/register', current: false },
-  { name: 'Loan Calculator', href: '/loan_calculator', current: false },
+  { name: 'Demo Calculator', href: '/loan_calculator_demo', current: false }
 ]
 
 function classNames(...classes) {
@@ -105,6 +105,16 @@ export default function NavBar() {
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                            Dashboard
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/loan_calculator"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                           Loan Calculator
                           </Link>
                         )}
                       </Menu.Item>
